@@ -44,7 +44,10 @@ function getRandomInt(min, max) {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if(playerSelection == "rock") {
+    if (playerSelection == computerSelection) {
+        return ["It's a tie..", "none"];
+    }
+    else if(playerSelection == "rock") {
         return computerSelection == "paper" ? ["You lose! Paper beats Rock", "computer"] : ["You win! Rock beats Scissors", "player"];
     }
     else if (playerSelection == "paper") {
@@ -60,7 +63,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    let playerScore = computerScore = 0;
+    let playerScore = computerScore = ties = 0;
     for (round = 0; round < 5; round++) {
         let computerHand = computerPlay();
         let playerHand = playerPlay();
@@ -70,9 +73,10 @@ function game() {
         alert(winner[0]);
         computerScore += winner[1] == "computer" ? 1 : 0;
         playerScore += winner[1] == "player" ? 1 : 0;
+        ties += winner[1] == "none" ? 1 : 0;
     }
 
-    alert("Player: " + playerScore + "\nComputer: " + computerScore);
+    alert("Player: " + playerScore + "\nComputer: " + computerScore + "\nTies: " + ties);
 }
 
 game();
