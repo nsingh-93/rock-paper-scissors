@@ -78,3 +78,12 @@ function game() {
 
     alert("Player: " + playerScore + "\nComputer: " + computerScore + "\nTies: " + ties);
 }
+
+// function startRound(e) {
+//     let computerHand = computerPlay();
+//     alert("button clicked");
+// }
+
+// const buttons = document.querySelectorAll('input[type="button"]');
+
+// buttons.forEach(button => button.addEventListener('onclick', startRound));

@@ -4,13 +4,23 @@
         <meta charset="UTF-8">
         <title>Rock Paper Scissors</title>
         <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
         <script src="rock-paper-scissors.js"></script>
-        <div id="play-area">
+    </head>
+    <body>        
+        <div>
             <input type="button" value="ROCK" id="rock" name="rock">
             <input type="button" value="PAPER" id="paper" name="paper">
             <input type="button" value="SCISSORS" id="scissors" name="scissors">
         </div>
+        <script>
+            function startRound(e) {
+                let computerHand = computerPlay();
+                alert("button clicked");
+            }
+
+            const buttons = document.querySelectorAll('input[type="button"]');
+
+            buttons.forEach(btn => btn.addEventListener('onclick', startRound));
+        </script>
     </body>
 </html>
