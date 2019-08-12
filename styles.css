@@ -1,0 +1,22 @@
+
+#play-area {
+    display: inline;
+}
+
+input {
+    border-radius: 8px;
+    font-size: 24px;
+}
+
+#rock {
+    color: #FFF;
+    background-color: #000;
+}
+
+#paper {
+    background-color: #FFF;
+}
+
+#scissors {
+    background-color: #005FFF;
+}
