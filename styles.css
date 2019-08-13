@@ -13,6 +13,36 @@ input {
     cursor: pointer;
 }
 
+.game-board {
+    border: 2px solid black;
+    padding: 50px;
+    width: 500px;
+    height: 400px;
+    margin: auto;
+}
+
+#result {
+    height: 175px;
+    justify-items: center;
+    align-items: center;
+    padding: 15px;
+    font-size: 24px;
+}
+
+#score-board {
+    height: 150px;
+    justify-items: center;
+    align-items: center;
+    padding: 15px;
+    font-size: 18px;
+}
+
+#play-area {
+    height: 75px;
+    justify-items: center;
+    align-items: center;
+}
+
 #rock {
     color: #FFF;
     background-color: #555;
