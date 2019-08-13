@@ -3,24 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>Rock Paper Scissors</title>
-        <link rel="stylesheet" href="styles.css">
-        <script src="rock-paper-scissors.js"></script>
+        <link rel="stylesheet" href="styles.css">        
     </head>
-    <body>        
-        <div>
-            <input type="button" value="ROCK" id="rock" name="rock">
-            <input type="button" value="PAPER" id="paper" name="paper">
-            <input type="button" value="SCISSORS" id="scissors" name="scissors">
+    <script src="rock-paper-scissors.js"></script>
+    <body>
+        <div id="result">
+            <span>Round result goes here</span>
+        </div>      
+        <div id="play-area">
+            <input type="button" class="btn" value="ROCK" id="rock" name="rock">
+            <input type="button" class="btn" value="PAPER" id="paper" name="paper">
+            <input type="button" class="btn" value="SCISSORS" id="scissors" name="scissors">
         </div>
-        <script>
-            function startRound(e) {
-                let computerHand = computerPlay();
-                alert("button clicked");
-            }
-
-            const buttons = document.querySelectorAll('input[type="button"]');
-
-            buttons.forEach(btn => btn.addEventListener('onclick', startRound));
-        </script>
-    </body>
+        <div id="score-board">
+            <span>Total score goes here</span>
+        </div>
+    </body>    
 </html>

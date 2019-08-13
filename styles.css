@@ -1,11 +1,16 @@
 
-#play-area {
-    display: inline;
-}
-
 input {
     border-radius: 8px;
     font-size: 24px;
+    padding: 15px 15px;
+    margin: 20px 20px;
+}
+
+.btn {
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
 }
 
 #rock {
@@ -15,6 +20,7 @@ input {
 
 #paper {
     background-color: #FFF;
+    border: 1px solid #AAA;
 }
 
 #scissors {

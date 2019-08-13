@@ -1,32 +1,30 @@
-function playerPlay() {
-    let request = "Enter \'rock\', \'paper\', or \'scissors\' for your move";
-    let choice = window.prompt(request).toLowerCase();
+document.addEventListener('DOMContentLoaded', function() {
+    const btns = document.querySelectorAll('input[type="button"]');
 
-    while (true) {
-        if (choice == "rock" || choice == "paper" || choice == "scissors") {
-            break;
-        }
-        else {
-            request = "Please enter one of the following: \'rock\', \'paper\', or \'scissors\'";
-            choice = window.prompt(request).toLowerCase();
-        }
-    }
+    btns.forEach(btn => btn.addEventListener('click', startRound));
+});
 
-    return choice;
+function startRound() {
+    let computerHand = computerPlay();
+    let playerHand = this.value.toLowerCase();
+
+    let winner = playRound(playerHand, computerHand);
+
+    alert(winner[0]);
 }
 
 function computerPlay() {
-    let option = getRandomInt(1, 3);
+    let option = Math.floor(Math.random() * 100) % 3;
     let computerHand = "";
 
     switch(option) {
-        case 1:
+        case 0:
             computerHand = "rock";
             break;
-        case 2:
+        case 1:
             computerHand = "paper";
             break;
-        case 3:
+        case 2:
             computerHand = "scissors";
             break;
         default:
@@ -34,13 +32,6 @@ function computerPlay() {
     }
 
     return computerHand;
-}
-
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-
-    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -58,32 +49,6 @@ function playRound(playerSelection, computerSelection) {
     }
     else
     {
-        throw new Error("There as an error with the game");
+        throw new Error("There was an error with the game");
     }
 }
-
-function game() {
-    let playerScore = computerScore = ties = 0;
-    for (round = 0; round < 5; round++) {
-        let computerHand = computerPlay();
-        let playerHand = playerPlay();
-
-        let winner = playRound(playerHand, computerHand);
-
-        alert(winner[0]);
-        computerScore += winner[1] == "computer" ? 1 : 0;
-        playerScore += winner[1] == "player" ? 1 : 0;
-        ties += winner[1] == "none" ? 1 : 0;
-    }
-
-    alert("Player: " + playerScore + "\nComputer: " + computerScore + "\nTies: " + ties);
-}
-
-// function startRound(e) {
-//     let computerHand = computerPlay();
-//     alert("button clicked");
-// }
-
-// const buttons = document.querySelectorAll('input[type="button"]');
-
-// buttons.forEach(button => button.addEventListener('onclick', startRound));
