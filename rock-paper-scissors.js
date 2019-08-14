@@ -1,5 +1,16 @@
+let resultsBox = document.querySelector('#result');
+let scoreBox = document.querySelector('#score-board');
+// Probably not the best way to try and keep the script from having to be placed in a specific
+// spot in the HTML, but it helps to not worry about making sure the script goes after the body,
+// or before depending ont eh situation
+let playerScore = computerScore = 0;
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Waiting for page to load first before attaching event listeners
     const btns = document.querySelectorAll('input[type="button"]');
+
+    resultsBox = document.querySelector('#result');
+    scoreBox = document.querySelector('#score-board');
 
     btns.forEach(btn => btn.addEventListener('click', startRound));
 });
@@ -10,7 +21,12 @@ function startRound() {
 
     let winner = playRound(playerHand, computerHand);
 
-    alert(winner[0]);
+    resultsBox.innerHTML = winner[0];
+
+    playerScore += winner[1] == "player" ? 1 : 0;
+    computerScore += winner[1] == "computer" ? 1 : 0;
+
+    scoreBox.innerHTML = `SCORE\n\nPlayer: ${playerScore}\nComputer: ${computerScore}`;
 }
 
 function computerPlay() {
