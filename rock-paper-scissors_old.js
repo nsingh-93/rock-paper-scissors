@@ -79,4 +79,4 @@ function game() {
     alert("Player: " + playerScore + "\nComputer: " + computerScore + "\nTies: " + ties);
 }
 
-game();
+//game();
