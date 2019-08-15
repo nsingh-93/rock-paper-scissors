@@ -1,18 +1,21 @@
+let btns = document.querySelectorAll('input[type="button"]');
 let resultsBox = document.querySelector('#result');
-let scoreBox = document.querySelector('#score-board');
-// Probably not the best way to try and keep the script from having to be placed in a specific
-// spot in the HTML, but it helps to not worry about making sure the script goes after the body,
-// or before depending ont eh situation
+let playerBoard = document.querySelector('#player-score');
+let computerBoard = document.querySelector('#computer-score');
+
 let playerScore = computerScore = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Waiting for page to load first before attaching event listeners
-    const btns = document.querySelectorAll('input[type="button"]');
+    btns = document.querySelectorAll('input[type="button"]');
 
     resultsBox = document.querySelector('#result');
-    scoreBox = document.querySelector('#score-board');
+    playerBoard = document.querySelector('#player-score');
+    computerBoard = document.querySelector('#computer-score');
 
     btns.forEach(btn => btn.addEventListener('click', startRound));
+
+    playerBoard.innerHTML = playerScore;
+    computerBoard.innerHTML = computerScore;
 });
 
 function startRound() {
@@ -26,14 +29,33 @@ function startRound() {
     playerScore += winner[1] == "player" ? 1 : 0;
     computerScore += winner[1] == "computer" ? 1 : 0;
 
-    scoreBox.innerHTML = `SCORE\n\nPlayer: ${playerScore}\nComputer: ${computerScore}`;
+    playerBoard.innerHTML = playerScore;
+    computerBoard.innerHTML = computerScore;
+    
+    let reset = document.querySelector('#reset');
+    reset.addEventListener('click', () => {
+        window.location.reload();
+    });
+    
+    if (playerScore > computerScore && playerScore == 5)
+    {
+        resultsBox.innerHTML = "You win!";
+        btns.forEach(btn => btn.removeEventListener('click', startRound));
+        reset.classList.remove('hidden');
+    }
+    else if(computerScore > playerScore && computerScore == 5)
+    {
+        resultsBox.innerHTML = "The computer won";
+        btns.forEach(btn => btn.removeEventListener('click', startRound));
+        reset.classList.remove('hidden');
+    }
 }
 
 function computerPlay() {
     let option = Math.floor(Math.random() * 100) % 3;
     let computerHand = "";
 
-    switch(option) {
+    switch (option) {
         case 0:
             computerHand = "rock";
             break;

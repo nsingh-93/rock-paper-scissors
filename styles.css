@@ -6,6 +6,10 @@ input {
     margin: 20px 20px;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .btn {
     border: none;
     text-decoration: none;
@@ -42,6 +46,7 @@ input {
     align-items: center;
     padding: 15px;
     font-size: 22px;
+    padding-top: 25px;
 }
 
 #play-area {
