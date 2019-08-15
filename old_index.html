@@ -3,8 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="styles.css">        
     </head>
+    <script src="rock-paper-scissors.js"></script>
     <body>
-        <script src="rock-paper-scissors.js"></script>
-    </body>
+        <input type="button" class="hidden" value="RESET" id="reset" name="reset">
+        <div class="game-board">
+            <div id="result">
+            </div>      
+            <div id="play-area">
+                <input type="button" class="btn" value="ROCK" id="rock" name="rock">
+                <input type="button" class="btn" value="PAPER" id="paper" name="paper">
+                <input type="button" class="btn" value="SCISSORS" id="scissors" name="scissors">
+            </div>
+            <div id="score-board">
+                <span>SCORE</span>
+                <div>Player: <span id="player-score"></span></div>
+                <div>Computer: <span id="computer-score"></span></div>
+            </div>
+        </div>
+    </body>    
 </html>

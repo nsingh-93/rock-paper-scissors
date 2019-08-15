@@ -1,0 +1,70 @@
+
+input {
+    border-radius: 8px;
+    font-size: 24px;
+    padding: 15px 15px;
+    margin: 20px 20px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.btn {
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.game-board {
+    position: absolute;
+    border: 2px solid black;
+    padding: 50px;
+    width: 500px;
+    height: 250px;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -125px;
+}
+
+#result {
+    text-align: center;
+    height: 50px;
+    justify-items: center;
+    align-items: center;
+    padding: 15px;
+    font-size: 30px;
+    border: 1px solid black;
+}
+
+#score-board {
+    text-align: center;
+    height: 125px;
+    justify-items: center;
+    align-items: center;
+    padding: 15px;
+    font-size: 22px;
+    padding-top: 25px;
+}
+
+#play-area {
+    height: 75px;
+    justify-items: center;
+    align-items: center;
+}
+
+#rock {
+    color: #FFF;
+    background-color: #555;
+}
+
+#paper {
+    background-color: #FFF;
+    border: 1px solid #AAA;
+}
+
+#scissors {
+    background-color: #005FFF;
+}

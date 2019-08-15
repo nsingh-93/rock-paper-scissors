@@ -1,32 +1,68 @@
-function playerPlay() {
-    let request = "Enter \'rock\', \'paper\', or \'scissors\' for your move";
-    let choice = window.prompt(request).toLowerCase();
+let btns = document.querySelectorAll('input[type="button"]');
+let resultsBox = document.querySelector('#result');
+let playerBoard = document.querySelector('#player-score');
+let computerBoard = document.querySelector('#computer-score');
 
-    while (true) {
-        if (choice == "rock" || choice == "paper" || choice == "scissors") {
-            break;
-        }
-        else {
-            request = "Please enter one of the following: \'rock\', \'paper\', or \'scissors\'";
-            choice = window.prompt(request).toLowerCase();
-        }
+let playerScore = computerScore = 0;
+
+document.addEventListener('DOMContentLoaded', function() {
+    btns = document.querySelectorAll('input[type="button"]');
+
+    resultsBox = document.querySelector('#result');
+    playerBoard = document.querySelector('#player-score');
+    computerBoard = document.querySelector('#computer-score');
+
+    btns.forEach(btn => btn.addEventListener('click', startRound));
+
+    playerBoard.innerHTML = playerScore;
+    computerBoard.innerHTML = computerScore;
+});
+
+function startRound() {
+    let computerHand = computerPlay();
+    let playerHand = this.value.toLowerCase();
+
+    let winner = playRound(playerHand, computerHand);
+
+    resultsBox.innerHTML = winner[0];
+
+    playerScore += winner[1] == "player" ? 1 : 0;
+    computerScore += winner[1] == "computer" ? 1 : 0;
+
+    playerBoard.innerHTML = playerScore;
+    computerBoard.innerHTML = computerScore;
+    
+    let reset = document.querySelector('#reset');
+    reset.addEventListener('click', () => {
+        window.location.reload();
+    });
+    
+    if (playerScore > computerScore && playerScore == 5)
+    {
+        resultsBox.innerHTML = "You win!";
+        btns.forEach(btn => btn.removeEventListener('click', startRound));
+        reset.classList.remove('hidden');
     }
-
-    return choice;
+    else if(computerScore > playerScore && computerScore == 5)
+    {
+        resultsBox.innerHTML = "The computer won";
+        btns.forEach(btn => btn.removeEventListener('click', startRound));
+        reset.classList.remove('hidden');
+    }
 }
 
 function computerPlay() {
-    let option = getRandomInt(1, 3);
+    let option = Math.floor(Math.random() * 100) % 3;
     let computerHand = "";
 
-    switch(option) {
-        case 1:
+    switch (option) {
+        case 0:
             computerHand = "rock";
             break;
-        case 2:
+        case 1:
             computerHand = "paper";
             break;
-        case 3:
+        case 2:
             computerHand = "scissors";
             break;
         default:
@@ -34,13 +70,6 @@ function computerPlay() {
     }
 
     return computerHand;
-}
-
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-
-    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -58,25 +87,6 @@ function playRound(playerSelection, computerSelection) {
     }
     else
     {
-        throw new Error("There as an error with the game");
+        throw new Error("There was an error with the game");
     }
 }
-
-function game() {
-    let playerScore = computerScore = ties = 0;
-    for (round = 0; round < 5; round++) {
-        let computerHand = computerPlay();
-        let playerHand = playerPlay();
-
-        let winner = playRound(playerHand, computerHand);
-
-        alert(winner[0]);
-        computerScore += winner[1] == "computer" ? 1 : 0;
-        playerScore += winner[1] == "player" ? 1 : 0;
-        ties += winner[1] == "none" ? 1 : 0;
-    }
-
-    alert("Player: " + playerScore + "\nComputer: " + computerScore + "\nTies: " + ties);
-}
-
-//game();
